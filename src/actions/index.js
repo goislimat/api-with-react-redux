@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 export const FETCH_POSTS = 'fetch_posts';
+export const FETCH_POST = 'fetch_post';
 export const CREATE_POST = 'create_posts';
 
-const ROOT_URL = 'http://reduxblog.herokuapp.com/api/posts?';
-const API_KEY = 'key=gogixx';
+const ROOT_URL = 'http://reduxblog.herokuapp.com/api/posts';
+const API_KEY = '?key=gogixx';
 
 export function fetchPosts() {
   //montar a url para buscar os posts
@@ -33,6 +34,16 @@ export function createPost(values, callback) {
 
   return {
     type: CREATE_POST,
+    payload: request,
+  };
+}
+
+export function fetchPost(id) {
+  const url = `${ROOT_URL}/${id}${API_KEY}`;
+  const request = axios.get(url);
+
+  return {
+    type: FETCH_POST,
     payload: request,
   };
 }
