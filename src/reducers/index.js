@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
-import fetchPosts from './fetch-posts';
+import fetchPosts from './reducer-fetch-posts';
 
 const rootReducer = combineReducers({
   posts: fetchPosts,
